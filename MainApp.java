@@ -1,15 +1,18 @@
-// import java.util.Array;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 import mypackage.*;
+import mypackage.equitation.Horse;
+import mypackage.equitation.Pegasus;
+import mypackage.species.Tiger;
 
 
 public class MainApp{
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
         // yoMan(NIMBER);
         // Les operateurs
@@ -32,11 +35,87 @@ public class MainApp{
         // lesTableaux();
         // lesChainesDeCaracteres();
         // lesPaquets();
-        lectureClavier();
-
+        // lectureClavier(); // les Exceptions inclusent
+        // lesHeritage();
+        // lesClassesAbstraite();
         
     }
 
+
+
+
+
+
+
+
+
+
+
+
+    public static void lesPolymorphisme() {
+        
+    }
+
+    public static void lesClassesAbstraite() {
+        Tiger ti = new Tiger();
+        System.out.println(ti.whoAmI() );
+    }
+
+
+    public static void lesHeritage() {
+
+        Horse h = new Horse("Guero");
+        h.move(127, 142);
+
+        Pegasus p = new Pegasus("Titanus");
+        p.move(33, 146);
+        p.fly(466);
+
+        if (p instanceof Pegasus) // si p est une instance de pegase
+            System.out.println("C'est un pegase !!");
+            
+        
+    }
+
+    public static void lectureClavier() {
+
+        //BufferedReader
+        // InputStreamReader isr = new InputStreamReader(System.in);
+        // BufferedReader br = new BufferedReader(isr);
+        // System.out.println("Comment t'appel tu ? ");
+        // String name = br.readLine();
+        // System.out.println(name);
+
+        // Scanner
+        /*
+         * nextLine()
+         * nextChar()
+         * nextByte()
+         * nextFloat()
+         * nextDouble()
+         * nextInt()
+         * nextBoolean()
+         */
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            System.out.println("Acceder à quel niveau ?");
+            int game_level = sc.nextInt();
+            System.out.println(game_level);
+
+        } catch (InputMismatchException e) {
+            // TODO: handle exception
+            System.out.println("Veuillez rentrer un nombre s'il vous plaît !!");
+            e.printStackTrace();
+            System.out.println("L'erreur : " + e.getMessage());
+        } catch (Exception e) {
+            // TODO: handle exception
+            // Capture de l'exception de manière génerale
+        } finally {
+            // Faire quelque chose peut importe ce qui se passe
+        }
+    }
+ 
     public static void yoMan(){
 
         System.out.println("Biencenu");
@@ -256,15 +335,4 @@ public class MainApp{
 
     }
 
-    public static void lectureClavier() throws Exception {
-        InputStreamReader isr = new InputStreamReader(System.in);
-        BufferedReader br = new BufferedReader(isr);
-
-        System.out.println("Comment t'appel tu ? ");
-        String name = br.readLine();
-        System.out.println(name);
-
-        // Scanner sc;
-
-    }
 }
